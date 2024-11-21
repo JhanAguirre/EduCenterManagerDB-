@@ -1,0 +1,38 @@
+﻿@page
+@model EduCenterManagerDB.Pages.Cursos.DeleteModel
+@{
+    ViewData["Title"] = "Eliminar Curso";
+}
+
+<h1>Eliminar Curso</h1>
+
+<div class="alert alert-danger">
+    <h3>¿Está seguro que desea eliminar este curso?</h3>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Nombre del Curso</dt>
+            <dd class="col-sm-9">@Model.Curso.NombreCurso</dd>
+
+            <dt class="col-sm-3">Descripción</dt>
+            <dd class="col-sm-9">@Model.Curso.Descripcion</dd>
+
+            <dt class="col-sm-3">Profesor</dt>
+            <dd class="col-sm-9">@($"{Model.Curso.Profesor?.Nombre} {Model.Curso.Profesor?.Apellido}")</dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="Curso.IdCurso" />
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash"></i> Confirmar Eliminación
+                </button>
+                <a asp-page="./Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

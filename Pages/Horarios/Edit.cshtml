@@ -1,0 +1,65 @@
+﻿@page
+@model EduCenterManagerDB.Pages.Horarios.EditModel
+@{
+    ViewData["Title"] = "Editar Horario";
+}
+
+<h1>Editar Horario</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <input type="hidden" asp-for="Horario.IdHorario" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Horario.IdCurso" class="control-label">Curso</label>
+                <select asp-for="Horario.IdCurso" class="form-control" asp-items="ViewBag.Cursos">
+                    <option value="">-- Seleccione un curso --</option>
+                </select>
+                <span asp-validation-for="Horario.IdCurso" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Horario.DiaSemana" class="control-label">Día de la Semana</label>
+                <select asp-for="Horario.DiaSemana" class="form-control">
+                    <option value="">-- Seleccione un día --</option>
+                    <option value="Lunes">Lunes</option>
+                    <option value="Martes">Martes</option>
+                    <option value="Miércoles">Miércoles</option>
+                    <option value="Jueves">Jueves</option>
+                    <option value="Viernes">Viernes</option>
+                    <option value="Sábado">Sábado</option>
+                </select>
+                <span asp-validation-for="Horario.DiaSemana" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Horario.HoraInicio" class="control-label">Hora de Inicio</label>
+                <input asp-for="Horario.HoraInicio" class="form-control" type="time" />
+                <span asp-validation-for="Horario.HoraInicio" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Horario.HoraFin" class="control-label">Hora de Fin</label>
+                <input asp-for="Horario.HoraFin" class="form-control" type="time" />
+                <span asp-validation-for="Horario.HoraFin" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Guardar Cambios
+                </button>
+                <a asp-page="Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

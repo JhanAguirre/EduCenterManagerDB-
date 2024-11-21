@@ -1,0 +1,42 @@
+﻿@page
+@model EduCenterManagerDB.Pages.Cursos.IndexModel
+@{
+    ViewData["Title"] = "Cursos";
+}
+
+<h1>Cursos</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Crear Nuevo Curso
+    </a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre del Curso</th>
+            <th>Descripción</th>
+            <th>Profesor</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var curso in Model.Cursos)
+        {
+            <tr>
+                <td>@curso.NombreCurso</td>
+                <td>@curso.Descripcion</td>
+                <td>@($"{curso.Profesor?.Nombre} {curso.Profesor?.Apellido}")</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@curso.IdCurso" class="btn btn-primary btn-sm">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a asp-page="./Delete" asp-route-id="@curso.IdCurso" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

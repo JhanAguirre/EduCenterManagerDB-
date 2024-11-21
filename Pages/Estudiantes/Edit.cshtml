@@ -1,0 +1,75 @@
+﻿@page
+@model EduCenterManagerDB.Pages.Estudiantes.EditModel
+@{
+    ViewData["Title"] = "Editar Estudiante";
+}
+
+<h1>Editar Estudiante</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <input type="hidden" asp-for="Estudiante.IdEstudiante" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Estudiante.Nombre" class="control-label">Nombre</label>
+                <input asp-for="Estudiante.Nombre" class="form-control" />
+                <span asp-validation-for="Estudiante.Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Estudiante.Apellido" class="control-label">Apellido</label>
+                <input asp-for="Estudiante.Apellido" class="form-control" />
+                <span asp-validation-for="Estudiante.Apellido" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Estudiante.FechaNacimiento" class="control-label">Fecha de Nacimiento</label>
+                <input asp-for="Estudiante.FechaNacimiento" class="form-control" type="date" />
+                <span asp-validation-for="Estudiante.FechaNacimiento" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Estudiante.Email" class="control-label">Email</label>
+                <input asp-for="Estudiante.Email" class="form-control" type="email" />
+                <span asp-validation-for="Estudiante.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Estudiante.Telefono" class="control-label">Teléfono</label>
+                <input asp-for="Estudiante.Telefono" class="form-control" />
+                <span asp-validation-for="Estudiante.Telefono" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Estudiante.Direccion" class="control-label">Dirección</label>
+                <input asp-for="Estudiante.Direccion" class="form-control" />
+                <span asp-validation-for="Estudiante.Direccion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Estudiante.IdCurso" class="control-label">Curso</label>
+                <select asp-for="Estudiante.IdCurso" class="form-control" asp-items="ViewBag.Cursos">
+                    <option value="">-- Seleccione un curso --</option>
+                </select>
+                <span asp-validation-for="Estudiante.IdCurso" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Guardar Cambios
+                </button>
+                <a asp-page="Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,51 @@
+﻿@page
+@model EduCenterManagerDB.Pages.Cursos.EditModel
+@{
+    ViewData["Title"] = "Editar Curso";
+}
+
+<h1>Editar Curso</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <input type="hidden" asp-for="Curso.IdCurso" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Curso.NombreCurso" class="control-label">Nombre del Curso</label>
+                <input asp-for="Curso.NombreCurso" class="form-control" />
+                <span asp-validation-for="Curso.NombreCurso" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Curso.Descripcion" class="control-label">Descripción</label>
+                <textarea asp-for="Curso.Descripcion" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Curso.Descripcion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Curso.IdProfesor" class="control-label">Profesor</label>
+                <select asp-for="Curso.IdProfesor" class="form-control" asp-items="ViewBag.Profesores">
+                    <option value="">-- Seleccione un profesor --</option>
+                </select>
+                <span asp-validation-for="Curso.IdProfesor" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Guardar Cambios
+                </button>
+                <a asp-page="Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

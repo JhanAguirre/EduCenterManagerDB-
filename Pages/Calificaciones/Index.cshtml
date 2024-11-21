@@ -1,0 +1,44 @@
+﻿@page
+@model EduCenterManagerDB.Pages.Calificaciones.IndexModel
+@{
+    ViewData["Title"] = "Calificaciones";
+}
+
+<h1>Calificaciones</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Crear Nueva Calificación
+    </a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Estudiante</th>
+            <th>Curso</th>
+            <th>Nota</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var calificacion in Model.Calificaciones)
+        {
+            <tr>
+                <td>@($"{calificacion.Estudiante?.Nombre} {calificacion.Estudiante?.Apellido}")</td>
+                <td>@calificacion.Curso?.NombreCurso</td>
+                <td>@calificacion.Nota</td>
+                <td>@calificacion.Fecha.ToShortDateString()</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@calificacion.IdCalificacion" class="btn btn-primary btn-sm">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a asp-page="./Delete" asp-route-id="@calificacion.IdCalificacion" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
