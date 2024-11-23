@@ -22,35 +22,37 @@ namespace EduCenterManagerDB.Data
         {
             base.OnModelCreating(modelBuilder);
 
+        
             modelBuilder.Entity<Estudiante>()
                 .HasOne(e => e.Curso)
                 .WithMany()
                 .HasForeignKey(e => e.IdCurso)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Curso>()
                 .HasOne(c => c.Profesor)
                 .WithMany()
                 .HasForeignKey(c => c.IdProfesor)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Horario>()
                 .HasOne(h => h.Curso)
                 .WithMany()
                 .HasForeignKey(h => h.IdCurso)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
+          
             modelBuilder.Entity<Calificacion>()
                 .HasOne(c => c.Estudiante)
                 .WithMany()
                 .HasForeignKey(c => c.IdEstudiante)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Calificacion>()
                 .HasOne(c => c.Curso)
                 .WithMany()
                 .HasForeignKey(c => c.IdCurso)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

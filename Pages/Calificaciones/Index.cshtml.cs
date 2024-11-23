@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EduCenterManagerDB.Pages.Calificaciones
 {
-    
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly ApplicationDbContext _context;

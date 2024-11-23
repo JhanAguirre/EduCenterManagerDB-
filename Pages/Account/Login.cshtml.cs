@@ -15,7 +15,7 @@ namespace EduCenterManagerDB.Pages.Account
         {
             if (!ModelState.IsValid) return Page();
 
-            // Aquí validamos el usuario (por ahora hardcodeado)
+           
             if (User.Email == "admin@admin.com" && User.Password == "Admin123!")
             {
                 var claims = new List<Claim>
