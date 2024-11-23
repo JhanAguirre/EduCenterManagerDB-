@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using EduCenterManagerDB.Data;
 using EduCenterManagerDB.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EduCenterManagerDB.Pages.Calificaciones
 {
+   
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;

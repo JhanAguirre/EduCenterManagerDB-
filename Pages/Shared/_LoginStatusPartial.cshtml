@@ -1,0 +1,15 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    <li class="nav-item">
+        <span class="nav-link text-dark">¡Bienvenido @User.Identity.Name!</span>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-page="/Account/Logout">Cerrar Sesión</a>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-page="/Account/Login">Iniciar Sesión</a>
+    </li>
+}
